@@ -9,7 +9,7 @@ const SigninContainer = () => {
     (reqData) => {
       dispatch(loginSagaStart(reqData));
       // console.log(dispatch); //reqData 잘 들어옴
-      console.log(dispatch(loginSagaStart(reqData))); //잘 나옴
+      // console.log(dispatch(loginSagaStart(reqData))); //잘 나옴
     },
     [dispatch]
   );
