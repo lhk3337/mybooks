@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { push } from "connected-react-router";
 import List from "../components/List";
 import { BookType, RootState } from "../types";
 import { getBooks as getBooksSagaStart } from "../redux/modules/books";
@@ -17,7 +18,12 @@ const ListContainer = () => {
   const logout = useCallback(() => {
     dispatch(logoutSagaStart());
   }, [dispatch]);
-  return <List books={books} loading={loading} getBooks={getBooks} error={error} logout={logout} />;
+
+  const goAdd = useCallback(() => {
+    dispatch(push("/add"));
+  }, [dispatch]);
+
+  return <List books={books} loading={loading} getBooks={getBooks} error={error} logout={logout} goAdd={goAdd} />;
 };
 
 export default ListContainer;

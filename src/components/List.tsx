@@ -10,9 +10,10 @@ interface ListProps {
   error: Error | null;
   logout: () => void;
   getBooks: () => void;
+  goAdd: () => void;
 }
 
-const List = ({ books, loading, getBooks, error, logout }: ListProps) => {
+const List = ({ books, loading, getBooks, error, logout, goAdd }: ListProps) => {
   useEffect(() => {
     getBooks();
   }, [getBooks]);
@@ -21,7 +22,6 @@ const List = ({ books, loading, getBooks, error, logout }: ListProps) => {
       logout();
     }
   }, [error, logout]);
-  const goAdd = () => {};
 
   return (
     <Layout>

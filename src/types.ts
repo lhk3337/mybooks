@@ -31,3 +31,10 @@ export interface BookType {
   createdAt: string;
   url: string;
 }
+
+export interface BookReqType {
+  title: string;
+  comment: string;
+  author: string;
+  url: string;
+}
