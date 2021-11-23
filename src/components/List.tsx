@@ -11,9 +11,10 @@ interface ListProps {
   logout: () => void;
   getBooks: () => void;
   goAdd: () => void;
+  deleteBook: (bookId: number) => void;
 }
 
-const List = ({ books, loading, getBooks, error, logout, goAdd }: ListProps) => {
+const List = ({ books, loading, getBooks, error, logout, goAdd, deleteBook }: ListProps) => {
   useEffect(() => {
     getBooks();
   }, [getBooks]);
@@ -43,7 +44,7 @@ const List = ({ books, loading, getBooks, error, logout, goAdd }: ListProps) => 
             title: "Book",
             dataIndex: "book",
             key: "book",
-            render: (text, record) => <Book {...record} />,
+            render: (text, record) => <Book {...record} deleteBook={deleteBook} />,
           },
         ]}
         loading={books === null || loading}

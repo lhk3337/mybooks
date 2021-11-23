@@ -5,9 +5,14 @@ import { BookType } from "../types";
 import moment from "moment";
 import { Button, Tooltip } from "antd";
 import styles from "./Book.module.css";
-interface BookProps extends BookType {}
+interface BookProps extends BookType {
+  deleteBook: (bookId: number) => void;
+}
 
-const Book = ({ bookId, title, author, createdAt, url }: BookProps) => {
+const Book = ({ bookId, title, author, createdAt, url, deleteBook }: BookProps) => {
+  const clickDel = () => {
+    deleteBook(bookId);
+  };
   return (
     <div className={styles.book}>
       <div className={styles.title}>
@@ -33,7 +38,7 @@ const Book = ({ bookId, title, author, createdAt, url }: BookProps) => {
           <Button size="small" shape="circle" icon={<EditOutlined />} className={styles.button_edit} />
         </Tooltip>
         <Tooltip title="Delete">
-          <Button size="small" type="primary" shape="circle" danger icon={<DeleteOutlined />} />
+          <Button size="small" type="primary" shape="circle" danger icon={<DeleteOutlined />} onClick={clickDel} />
         </Tooltip>
       </div>
     </div>
