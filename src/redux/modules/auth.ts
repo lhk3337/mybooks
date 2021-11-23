@@ -53,7 +53,7 @@ function* loginSaga(action: Action<LoginReqType>) {
     yield put(success(token));
     yield put(push("/"));
   } catch (error) {
-    // console.log(put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR"))));
+    console.log(put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR"))));
   }
 }
 
